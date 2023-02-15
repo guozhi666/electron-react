@@ -8,7 +8,7 @@ import { login } from '../../api/index'
 import { formatImg } from '../../utils/index';
 import './login.css'
 
-function Login() {
+function Login(props: any) {
   const navigate  = useNavigate()
   const dispatch = useDispatch();
   const form = Form.useForm()[0];
@@ -20,7 +20,6 @@ function Login() {
     setImgSrc();
   },[]);
   const setImgSrc = () =>{
-    console.log('验证码')
     login.captchaImage({type:'math'}).then((respone:any)=>{
       if(respone){
           setCodeImg(formatImg(respone));
@@ -37,6 +36,7 @@ function Login() {
   const toHome = () =>{
     //获取用户名密码
     form.validateFields().then(rep =>{
+      console.log('rep', rep)
       rep.uuid = uuid;
       // login.login(rep).then((res:any) => {
 
