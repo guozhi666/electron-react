@@ -1,0 +1,9 @@
+.header_wrapper {
+  width: calc(100vw - 200px);
+  height:50px;
+  background: #3c8dbc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99999;
+}

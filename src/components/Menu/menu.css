@@ -1,0 +1,16 @@
+.menu_wrapper {
+  width: 200px;
+  height: 100%;
+  color: white;
+  background: #2f4050;
+}
+.menu_title {
+  width: 100%;
+  height: 50px;
+  background: #377fa9;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 400;
+}
