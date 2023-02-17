@@ -46,7 +46,7 @@ function Login(props: any) {
         nickName: '昵称'
       }))
       localStorage.setItem('TOKEN', 'token')
-      navigate('/home?id=1&name=test')
+      navigate('/')
     })
   }
 

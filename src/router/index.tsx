@@ -1,9 +1,9 @@
 import Login from '../view/Login/Login';
 import Home from '../view/Home/Home'
 import Violation from '../view/Violation/Violation'
-import { RouteObject } from '../utils/interfaceType'
+import { createHashRouter } from 'react-router-dom'
 
-const router:RouteObject[] = [
+const router = [
   {
     path:'/',
     element: <Login/>
@@ -21,4 +21,4 @@ const router:RouteObject[] = [
   
 ]
 
-export default router;
+export default createHashRouter(router);

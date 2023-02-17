@@ -15,8 +15,6 @@ function Home() {
   // @ts-ignore
   const userInfo = useStore().getState().userInfo.userName
 
-  console.log('location', location);
-  console.log('searchParams', searchParams.get('id'), searchParams.get('name'))
   function routeBack() {
     navigate(-1)
   }
