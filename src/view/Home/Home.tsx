@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams, useLocation, Outlet } from 'react-router-dom'
+import { useNavigate, useSearchParams, Outlet } from 'react-router-dom'
 import { Button } from 'antd'
 import { useStore } from 'react-redux';
 import Menu from '../../components/Menu/Menu';
@@ -9,7 +9,6 @@ import './home.css'
 function Home() {
   let [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const location = useLocation();
 
 
   // @ts-ignore

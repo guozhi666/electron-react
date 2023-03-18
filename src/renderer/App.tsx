@@ -1,9 +1,18 @@
-import { Route,Routes,HashRouter} from 'react-router-dom';
+import { Route, Routes, HashRouter} from 'react-router-dom';
 import zhCN from 'antd/es/locale/zh_CN';
 import {ConfigProvider} from 'antd';
 import {Provider} from 'react-redux';
+import {
+  GuardConfigProvider,
+  GuardedRoute,
+  GuardedRoutes,
+  GuardMiddleware,
+  GuardProvider,
+  GuardedRouteObject,
+  useGuardedRoutes,
+} from 'react-router-guarded-routes'
 import store  from '../redux/redux';
-import router from '../router/index';
+// import Routes from '../router/index';
 import './App.css';
 import Login from '../view/Login/Login';
 import Home from '../view/Home/Home'
@@ -14,6 +23,7 @@ import Menu from '../view/System/Menu/Menu'
 import Dept from '../view/System/Dept/Dept'
 import Post from '../view/System/Post/Post'
 import Dict from '../view/System/Dict/Dict'
+// import WithGuarde from '../components/WithGuarde/WithGuarde'
 
 const renderEmpty =() =>{
 	return <div className="renderEmpty">
@@ -22,7 +32,26 @@ const renderEmpty =() =>{
 	</div>
 }
 
-console.log('router', router);
+// const logGuard: GuardMiddleware = (to, from, next, route) => {
+//   console.log(to, from) // to Location (see react-router), from Location.
+//   console.log(route) // the GuardedRouteObject.
+//   // run the next middleware.
+//   next()
+// }
+
+// const guards = [logGuard]
+
+const routes: GuardedRouteObject[] = [
+  { path: '/', element: <div>foo</div> },
+  {
+    path: '/bar/*',
+    element: <div>bar</div>,
+    children: [{ path: '/bar/baz', element: <div>baz</div> }],
+  },
+]
+console.log('rrr');
+
+
 
 export default function App() {
 
@@ -30,15 +59,8 @@ export default function App() {
     <Provider store={store}>
       <ConfigProvider locale={zhCN} renderEmpty={renderEmpty}>
         <HashRouter>
-          <Routes>
-            {/* {router.map((item:any,index:number) => {
-              if (item.children && item.children.length > 0) {
-                item.children.map((m:any, n:number) => <Route path={m.path} element={m.element} key={index+'_'+n} />)
-              } else {
-                return <Route path={item.path} element={item.element} key={index} />
-              }
-            })} */}
-            <Route path='/login' element={<Login></Login>}/>
+        <Routes>
+          <Route path='/login' element={<Login></Login>}/>
             <Route path='/' element={<Home></Home>}>
               <Route path='violation' element={<Violation></Violation>}></Route>
               <Route path='system/user' element={<User></User>}></Route>
@@ -49,8 +71,8 @@ export default function App() {
               <Route path='system/dict' element={<Dict></Dict>}></Route>
             </Route>
           </Routes>
-        </HashRouter>
-      </ConfigProvider>
-    </Provider>
+       </HashRouter>
+       </ConfigProvider>
+     </Provider>
   );
 }
